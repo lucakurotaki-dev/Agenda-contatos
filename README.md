@@ -4,4 +4,4 @@ Projeto desenvolvido para fins didáticos. A aplicação consiste em uma agenda 
 - Node/Express
 - Bootstrap
 - Ejs
-- MongoDB
+- Atlas/MongoDB
