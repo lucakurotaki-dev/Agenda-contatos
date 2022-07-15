@@ -1,0 +1,53 @@
+<%- include('includes/head'); %> 
+<%- include('includes/nav'); %> 
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8 my-3">
+      <h1 class="text-center">Account registration or Login</h1>
+      <p class="text-center lead">Enter or create an account!</p>
+
+      <%- include('includes/messages') %> 
+
+      <div class="row">
+        <div class="col-lg">
+          <h4>Sign up</h4>
+          <p>If you don't have an account yet, register now!</p>
+
+          <form action="/login/register" method="POST">
+            <input type="hidden" name="_csrf" value=<%= csrfToken %> >
+            <div class="mb-3">
+              <label>Email</label>
+              <input type="email" class="form-control" name="email">
+            </div>
+            <div class="mb-3">
+              <label>Password</label>
+              <input type="password" class="form-control" name="password">
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+          </form>
+        </div>
+
+        
+        <div class="col-lg">
+          <h4>Sign in</h4>
+          <p>If you already have an account, just login!</p>
+
+          <form action="/login/login" method="POST">
+            <input type="hidden" name="_csrf" value=<%= csrfToken %> >
+            <div class="mb-3">
+              <label>Email</label>
+              <input type="email" class="form-control" name="email">
+            </div>
+            <div class="mb-3">
+              <label>Password</label>
+              <input type="password" class="form-control" name="password">
+            </div>
+            <button type="submit" class="btn btn-primary">Enter</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('includes/footer') %> 
