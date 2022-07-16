@@ -30,12 +30,42 @@ class Contact {
       
   }
 
+  async edit(id){
+    if(typeof id !== 'string'){
+      return;
+    }
+
+    this.validate();
+
+    if(this.errors.length > 0){
+      return;
+    }
+
+    this.contact = await ContactModel.findByIdAndUpdate(id, this.body, {new: true});
+  }
+
+  //retorna um contato específico
   static async findById(id){
     if(typeof id !== 'string'){
       return;
     }
-    const user = await ContactModel.findById(id);
-    return user;
+    const contact = await ContactModel.findById(id);
+    return contact;
+  }
+  
+  //retorna todos os contatos
+  static async findContacts(){
+    const contacts = await ContactModel.find().sort({date: -1});//sort ordena os contatos em ordem decrescente
+    return contacts;
+  }
+
+  static async delete(id){
+    if(typeof id !== 'string'){
+      return;
+    }
+
+    const contact = await ContactModel.findOneAndDelete({_id: id});
+    return contact;
   }
 
   validate(){
